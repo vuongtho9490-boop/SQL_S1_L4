@@ -1,0 +1,26 @@
+CREATE DATABASE QuanLyThuVien;
+USE QuanLyThuVien;
+
+CREATE TABLE DocGia (
+    MaDG VARCHAR(20) PRIMARY KEY,
+    HoTen VARCHAR(100) NOT NULL,
+    NgaySinh DATE,
+    DiaChi VARCHAR(255),
+    SoDienThoai VARCHAR(15)
+);
+
+CREATE TABLE Sach (
+    MaSach VARCHAR(20) PRIMARY KEY,
+    TenSach VARCHAR(150) NOT NULL,
+    TacGia VARCHAR(100),
+    NhaXuatBan VARCHAR(100),
+    NamXuatBan INT
+);
+
+CREATE TABLE MuonSach (
+    MaDG VARCHAR(20),
+    MaSach VARCHAR(20),
+    PRIMARY KEY (MaDG, MaSach),
+    FOREIGN KEY (MaDG) REFERENCES DocGia(MaDG),
+    FOREIGN KEY (MaSach) REFERENCES Sach(MaSach)
+);
